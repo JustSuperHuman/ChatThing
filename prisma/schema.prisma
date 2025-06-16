@@ -1,0 +1,132 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  Subscription  Subscription?
+  threads       Thread[]
+  settings      UserSettings?
+}
+
+model UserSettings {
+  id                      String   @id @default(cuid())
+  userId                  String   @unique
+  user                    User     @relation(fields: [userId], references: [id])
+
+  // Profile Settings
+  profession              String?  // e.g., "Engineer, student, etc."
+  aiTraits                String?  // JSON string array of traits like ["friendly", "witty"]
+  userPreferences         String?  // For "Anything else T3 Chat should know about you?"
+
+  // Visual Options
+  boringTheme             Boolean  @default(false)
+  hidePersonalInfo        Boolean  @default(false)
+  disableThematicBreaks   Boolean  @default(false)
+  statsForNerds           Boolean  @default(false)
+  mainTextFont            String   @default("Proxima Vara")
+  codeFont                String?
+
+  // Model Management
+  enabledModels           String? // JSON string array of model_ids
+}
+
+model Thread {
+  id        String    @id @default(cuid())
+  title     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  userId    String?
+  user      User?     @relation(fields: [userId], references: [id])
+  messages  Message[]
+
+  // Sharing
+  isShared  Boolean   @default(false)
+  shareId   String?   @unique // Unique ID for public sharing
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  threadId  String
+  thread    Thread   @relation(fields: [threadId], references: [id])
+  model     String   // e.g., "openai/chatgpt-4o-latest"
+  isFromUser Boolean // True for user messages, false for AI responses
+  attachments String? // JSON string array of file URLs
+
+  // Branching
+  parentId  String?
+  parent    Message? @relation("MessageChildren", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children  Message[] @relation("MessageChildren")
+}
+
+model Subscription {
+  id                     String    @id @default(cuid())
+  userId                 String    @unique
+  user                   User      @relation(fields: [userId], references: [id])
+  stripeCustomerId       String    @unique
+  stripeSubscriptionId   String?   @unique
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
+}
+
+model AnonymousUsage {
+  id            String   @id @default(cuid())
+  ipAddress     String
+  date          String   // YYYY-MM-DD format for daily tracking
+  messageCount  Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@unique([ipAddress, date])
+}
+
+// NextAuth required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

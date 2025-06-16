@@ -1,0 +1,1 @@
+import { db } from "./src/server/db.js"; console.log("Testing DB connection..."); db.user.findMany().then(() => console.log("✅ DB connection works")).catch(e => console.error("❌ DB error:", e.message));
