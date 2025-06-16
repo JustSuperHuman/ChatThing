@@ -1,26 +1,16 @@
 # 🏆 T3 Chat Clone - 2025 Clonethon Entry
 
-[![Clonethon 2025](https://img.shields.io/badge/Clonethon-2025-blue?style=for-the-badge&logo=trophy)](https://github.com/t3-oss/clonethon)
-[![Prize Pool](https://img.shields.io/badge/Prize%20Pool-$10,000+-green?style=for-the-badge&logo=dollar-sign)](https://github.com/t3-oss/clonethon)
-[![Deadline](https://img.shields.io/badge/Deadline-June%2018,%202025-red?style=for-the-badge&logo=calendar)](https://github.com/t3-oss/clonethon)
-
-> **Competing for the ultimate prize!** 🎯 This is our submission to the **2025 Clonethon** hosted by [@theo](https://github.com/t3dotgg) - an open source competition to clone T3 Chat with a **$10,000+ prize pool**!
-
-## 🎉 Competition Details
-
-- **🏅 1st Place:** $5,000
-- **🥈 2nd Place:** $2,000
-- **🥉 3rd Place:** $1,000
-- **🎁 Top 8 Finalists:** 1 Year Free T3 Chat
-- **⏰ Deadline:** June 18, 2025 at 12:00 PM PDT
+> **Competing for the ultimate prize!** 🎯 This is our submission to the **2025 Clonethon** hosted by [@theo](https://github.com/t3dotgg) - a
 
 ## 🚀 Project Overview
 
-**Chat Thang** is a modern, feature-rich chat application that provides seamless access to multiple Large Language Models (LLMs) through a single, elegant interface. Built with the T3 Stack and designed to compete with the best, this application delivers enterprise-grade features with a focus on user experience and performance.
+**Chat Thang** is a ~~modern~~ basic-af, ~~feature~~bug-rich chat application that provides seamless access to multiple Large Language Models (LLMs) through a single, ~~elegant~~ interface. Built with the T3 Stack and designed to compete with ~~the best~~ **that guy who unrandomizes UUIDs for breakfast**, this application delivers ~~enterprise~~passing-grade features with a focus on user experience and performance.
+
+TBH - Works, but not well and with nothing novel. If it places, maybe I'll build on it! I did it mostly for (ai generated) speed and as of submission it took ~5 hours.
 
 ### ✨ What Makes This Special
 
-This isn't just another chat app - it's a comprehensive LLM wrapper that brings together the best AI models from OpenAI, Anthropic, Google, Meta, and more, all accessible through one beautifully designed interface.
+This ~~isn't~~ is literally just another chat app - it's a ~~comprehensive~~ C- from a generous professor LLM wrapper that brings together the ~~best~~ most affordable AI models from OpenAI, Anthropic, Google, Meta, and more, all accessible through one ~~beautifully~~ vibe designed interface.
 
 ## 🎯 Core Features (Competition Requirements)
 
@@ -35,7 +25,7 @@ This isn't just another chat app - it's a comprehensive LLM wrapper that brings 
 
 - **NextAuth.js** with email and GitHub providers
 - **Persistent Chat History** across all devices
-- **User Settings & Preferences** with full customization
+- **User Settings & Preferences** with full customization (untested)
 - **Secure Session Management** with Prisma adapter
 
 ### ✅ Browser Friendly
@@ -273,13 +263,11 @@ This project is released under the **MIT License**, making it fully open source 
 - **🤖 12+ AI Models** - Diverse LLM selection
 - **⚡ Real-time Streaming** - Instant response delivery
 - **📱 Mobile Optimized** - Works on all devices
-- **🔒 Enterprise Security** - Production-ready authentication
 
 ## 🙏 Acknowledgments
 
 - **[@theo](https://github.com/t3dotgg)** for hosting the 2025 Clonethon and inspiring the community
 - **[T3 Stack](https://create.t3.gg/)** for the amazing foundation and tools
-- **[Vercel](https://vercel.com)** for the AI SDK and deployment platform
 - **[OpenRouter](https://openrouter.ai)** for providing access to multiple LLM providers
 - **The Open Source Community** for all the incredible tools and libraries
 
@@ -288,8 +276,6 @@ This project is released under the **MIT License**, making it fully open source 
 <div align="center">
 
 **Built with ❤️ for the 2025 Clonethon**
-
-_Competing for the ultimate prize in open source innovation!_
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/chat-thang)
 
